@@ -30,7 +30,7 @@ addLayer("q", {
         11: {
             title: "Better detectors",
             description: "Double your Quarks gain.",
-            cost: new Decimal(25),
+            cost: new Decimal(1),
         }
     }
 })
