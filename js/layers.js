@@ -9,7 +9,7 @@ addLayer("q", {
     color: "#09253b",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Quark Resources", // Name of prestige currency
-    baseResource: "points", // Name of resource prestige is based on
+    baseResource: "Quarks", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -30,7 +30,13 @@ addLayer("q", {
         11: {
             title: "Better detectors",
             description: "Double your Quarks gain.",
-            cost: new Decimal(1),
+            cost: new Decimal(5),
+
+            effect() {
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
     }
 })
